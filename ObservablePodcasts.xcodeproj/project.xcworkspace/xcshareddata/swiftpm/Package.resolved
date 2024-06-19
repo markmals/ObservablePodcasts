@@ -1,0 +1,78 @@
+{
+  "originHash" : "f478035806f4bd0567d2fd8c9f9a89a71516570824f7e976bad45e89ea79f3de",
+  "pins" : [
+    {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "084076db4f9b9ee4db51177ef5a4879689c1aa09",
+        "version" : "12.7.2"
+      }
+    },
+    {
+      "identity" : "swift-case-paths",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-case-paths",
+      "state" : {
+        "revision" : "b871e5ed11a23e52c2896a92ce2c829982ff8619",
+        "version" : "1.4.2"
+      }
+    },
+    {
+      "identity" : "swift-concurrency-extras",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-concurrency-extras",
+      "state" : {
+        "revision" : "bb5059bde9022d69ac516803f4f227d8ac967f71",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swift-custom-dump",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-custom-dump",
+      "state" : {
+        "revision" : "f01efb26f3a192a0e88dcdb7c3c391ec2fc25d9c",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "swift-perception",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-perception",
+      "state" : {
+        "revision" : "d3ab98dc2887d1cc3bed676f6fa354da4cb22b3c",
+        "version" : "1.2.4"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax",
+      "state" : {
+        "revision" : "303e5c5c36d6a558407d364878df131c3546fad8",
+        "version" : "510.0.2"
+      }
+    },
+    {
+      "identity" : "swiftui-navigation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swiftui-navigation/",
+      "state" : {
+        "branch" : "uikit-navigation-beta",
+        "revision" : "3ccea5481c76373c16c523010bd62a20be646d16"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "6f30bdba373bbd7fbfe241dddd732651f2fbd1e2",
+        "version" : "1.1.2"
+      }
+    }
+  ],
+  "version" : 3
+}
