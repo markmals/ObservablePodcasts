@@ -4,12 +4,19 @@ import UIKitNavigation
 
 extension Observable {
     @MainActor
-    func changes<T>(for property: KeyPath<Self, T>) -> AsyncStream<T> {
+    func changes<T>(for property: KeyPath<Self, T>, in object: NSObject = .init()) -> AsyncStream<T> {
         AsyncStream { continuation in
-            NSObject().observe {
+            object.observe {
                 continuation.yield(self[keyPath: property])
             }
         }
+    }
+}
+
+extension Observable where Self: NSObject {
+    @MainActor
+    func changes<T>(for property: KeyPath<Self, T>) -> AsyncStream<T> {
+        changes(for: property, in: self)
     }
 }
 

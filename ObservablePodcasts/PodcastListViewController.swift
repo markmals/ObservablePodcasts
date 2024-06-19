@@ -27,7 +27,7 @@ final class PodcastListViewController: UICollectionViewController {
     @ViewLoading private var searchController: UISearchController
     
     private let manager = PodcastManager()
-    private var podcastFetchTask: Task<Void, Never>?
+    private var currentSearch: Task<Void, Never>?
     
     convenience init() {
         self.init(collectionViewLayout:
@@ -49,13 +49,20 @@ final class PodcastListViewController: UICollectionViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = dataSource
         
+        let searchTerms = self.viewModel
+            .changes(for: \.searchText, in: self)
+            .debounce(for: .milliseconds(300))
+        
         Task { @MainActor [unowned self] in
-            for await searchTerm in self.viewModel.changes(for: \.searchText).debounce(for: .milliseconds(3)) {
-                if let podcasts = try? await self.manager.search(for: searchTerm) {
-                    var snapshot = NSDiffableDataSourceSnapshot<Int, Podcast>()
-                    snapshot.appendSections([0])
-                    snapshot.appendItems(podcasts)
-                    await self.dataSource.apply(snapshot)
+            for await term in searchTerms {
+                self.currentSearch?.cancel()
+                self.currentSearch = Task {
+                    if let podcasts = try? await self.manager.search(for: term) {
+                        var snapshot = NSDiffableDataSourceSnapshot<Int, Podcast>()
+                        snapshot.appendSections([0])
+                        snapshot.appendItems(podcasts)
+                        await self.dataSource.apply(snapshot)
+                    }
                 }
             }
         }
