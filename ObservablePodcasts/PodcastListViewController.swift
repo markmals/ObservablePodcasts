@@ -1,6 +1,7 @@
 import UIKit
 import Observation
 import UIKitNavigation
+import AsyncAlgorithms
 
 @Observable
 @MainActor
@@ -48,14 +49,9 @@ final class PodcastListViewController: UICollectionViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = dataSource
         
-        observe { [weak self] in
-            guard let self else { return }
-            self.podcastFetchTask?.cancel()
-            let text = self.viewModel.searchText
-            
-            self.podcastFetchTask = Task { @MainActor in
-                try? await Task.sleep(for: .milliseconds(3))
-                if let podcasts = try? await self.manager.search(for: text) {
+        Task { @MainActor [unowned self] in
+            for await searchTerm in self.viewModel.changes(for: \.searchText).debounce(for: .milliseconds(3)) {
+                if let podcasts = try? await self.manager.search(for: searchTerm) {
                     var snapshot = NSDiffableDataSourceSnapshot<Int, Podcast>()
                     snapshot.appendSections([0])
                     snapshot.appendItems(podcasts)

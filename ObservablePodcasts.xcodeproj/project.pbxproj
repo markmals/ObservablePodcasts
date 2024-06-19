@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DBB16D412C235B0400CE5BB0 /* Observable+AsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB16D402C235B0400CE5BB0 /* Observable+AsyncStream.swift */; };
+		DBB16D442C235E6200CE5BB0 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = DBB16D432C235E6200CE5BB0 /* AsyncAlgorithms */; };
 		DBB50ABC2C233F5D008964D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */; };
 		DBB50ABE2C233F5D008964D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */; };
 		DBB50AC02C233F5D008964D4 /* PodcastListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABF2C233F5D008964D4 /* PodcastListViewController.swift */; };
@@ -23,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DBB16D402C235B0400CE5BB0 /* Observable+AsyncStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+AsyncStream.swift"; sourceTree = "<group>"; };
 		DBB50AB82C233F5D008964D4 /* ObservablePodcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservablePodcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 				DBB50ADF2C23510E008964D4 /* Nuke in Frameworks */,
 				DBB50AD22C2340F8008964D4 /* SwiftNavigation in Frameworks */,
 				DBB50AD42C2340F8008964D4 /* UIKitNavigation in Frameworks */,
+				DBB16D442C235E6200CE5BB0 /* AsyncAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +101,7 @@
 			children = (
 				DBB50AE02C2351D2008964D4 /* Sequence+async.swift */,
 				DBB50AD52C23502A008964D4 /* UISearch+UIBinding.swift */,
+				DBB16D402C235B0400CE5BB0 /* Observable+AsyncStream.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				DBB50AD12C2340F8008964D4 /* SwiftNavigation */,
 				DBB50AD32C2340F8008964D4 /* UIKitNavigation */,
 				DBB50ADE2C23510E008964D4 /* Nuke */,
+				DBB16D432C235E6200CE5BB0 /* AsyncAlgorithms */,
 			);
 			productName = ObservablePodcasts;
 			productReference = DBB50AB82C233F5D008964D4 /* ObservablePodcasts.app */;
@@ -153,6 +159,7 @@
 			packageReferences = (
 				DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				DBB50ADD2C23510D008964D4 /* XCRemoteSwiftPackageReference "Nuke" */,
+				DBB16D422C235E6200CE5BB0 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
 			);
 			productRefGroup = DBB50AB92C233F5D008964D4 /* Products */;
 			projectDirPath = "";
@@ -184,6 +191,7 @@
 				DBB50AE12C2351D2008964D4 /* Sequence+async.swift in Sources */,
 				DBB50ADC2C2350A5008964D4 /* PodcastManager.swift in Sources */,
 				DBB50ABC2C233F5D008964D4 /* AppDelegate.swift in Sources */,
+				DBB16D412C235B0400CE5BB0 /* Observable+AsyncStream.swift in Sources */,
 				DBB50ABE2C233F5D008964D4 /* SceneDelegate.swift in Sources */,
 				DBB50AD62C23502A008964D4 /* UISearch+UIBinding.swift in Sources */,
 				DBB50ADA2C235088008964D4 /* PodcastCell.swift in Sources */,
@@ -404,6 +412,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DBB16D422C235E6200CE5BB0 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation/";
@@ -423,6 +439,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DBB16D432C235E6200CE5BB0 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBB16D422C235E6200CE5BB0 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
 		DBB50AD12C2340F8008964D4 /* SwiftNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
