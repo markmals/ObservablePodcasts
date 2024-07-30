@@ -33,7 +33,7 @@ extension UXView {
     public func frame(_ size: CGFloat? = nil) -> Self {
         frame(width: size, height: size)
     }
-
+    
     @discardableResult
     public func margins(top: CGFloat? = nil, left: CGFloat? = nil, bottom: CGFloat? = nil, right: CGFloat? = nil) -> Self {
         var margins = nativeView.layoutMargins
@@ -42,7 +42,7 @@ extension UXView {
         margins.bottom = bottom ?? margins.bottom
         margins.right = right ?? margins.right
         nativeView.layoutMargins = margins
-
+        
         return self
     }
     
@@ -63,7 +63,7 @@ extension UXView {
         guard nativeView.superview != nil else {
             return
         }
-
+        
         layout {
             $0.topAnchor == pinningView.nativeView.topAnchor + insets.top
             $0.bottomAnchor == pinningView.nativeView.bottomAnchor - insets.bottom
@@ -71,7 +71,7 @@ extension UXView {
             $0.rightAnchor == pinningView.nativeView.rightAnchor - insets.right
         }
     }
-
+    
 }
 
 extension UIView: UXView {
@@ -137,39 +137,39 @@ open class UXLabel: UIViewRepresentable<UILabel> {
 
 @resultBuilder
 public struct UXViewBuilder {
-    public static func buildBlock<View: UXView>(_ views: View...) -> [View] {
+    public static func buildBlock(_ views: any UXView...) -> [any UXView] {
         views
     }
     
-    public static func buildBlock<View: UXView>(_ view: View) -> View {
+    public static func buildBlock(_ view: any UXView) -> any UXView {
         view
     }
     
-    public static func buildBlock<View: UXView>(_ view: View) -> [View] {
+    public static func buildBlock(_ view: any UXView) -> [any UXView] {
         [view]
     }
     
-    public static func buildExpression<View: UXView>(_ view: View) -> View {
+    public static func buildExpression(_ view: any UXView) -> any UXView {
         view
     }
     
-    public static func buildExpression<View: UXView>(_ view: [View]) -> [View] {
+    public static func buildExpression(_ view: [any UXView]) -> [any UXView] {
         view
     }
     
-//    public static func buildOptional(_ view: (any UXView)?) -> any UXView {
-//        view ?? UIView()
-//    }
+    //    public static func buildOptional(_ view: (any UXView)?) -> any UXView {
+    //        view ?? UIView()
+    //    }
     
     //        public static func buildOptional(_ views: [UIView]?) -> [UIView] {
     //            views ?? []
     //        }
     
-    public static func buildEither<View: UXView>(first views: [View]) -> [View] {
+    public static func buildEither(first views: [any UXView]) -> [any UXView] {
         views
     }
     
-    public static func buildEither<View: UXView>(second views: [View]) -> [View] {
+    public static func buildEither(second views: [any UXView]) -> [any UXView] {
         views
     }
 }
@@ -222,7 +222,7 @@ open class UXStackView<Child: UXView>: UIViewRepresentable<UIStackView> {
         removeAllArrangedSubviews()
         addArrangedSubviews(subviews)
     }
-
+    
     public func distribution(_ distribution: @escaping @autoclosure Accessor<UIStackView.Distribution>) -> Self {
         bind(distribution, to: { self.nativeView.distribution = $0 })
         return self
@@ -256,7 +256,7 @@ open class UXImageView: UIViewRepresentable<UIImageView> {
 public protocol Component: UXView {
     associatedtype View: UXView
     associatedtype NativeView = View.NativeView
-
+    
     @UXViewBuilder func render() -> View
 }
 
@@ -268,9 +268,6 @@ extension Component {
 
 struct PodcastListItem: Component {
     let podcast: Accessor<Podcast>
-    
-//    var nameLabel: UILabel? = nil
-//    var labelStack: UIStackView? = nil
     
     public init(podcast: @escaping @autoclosure Accessor<Podcast>) {
         self.podcast = podcast
@@ -285,13 +282,13 @@ struct PodcastListItem: Component {
                     .font(.preferredFont(forTextStyle: .headline))
                     .numberOfLines(2)
                     .lineBreakMode(.byTruncatingTail)
-//                    .layout { $0.trailingAnchor == self.labelStack?.trailingAnchor - 15 }
+                //                    .layout { $0.trailingAnchor == self.labelStack?.trailingAnchor - 15 }
                 
                 UXLabel(podcast().creator)
                     .font(.preferredFont(forTextStyle: .subheadline))
                     .textColor(.secondaryLabel)
                     .lineBreakMode(.byTruncatingTail)
-//                    .layout { $0.trailingAnchor == self.nameLabel?.trailingAnchor }
+                //                    .layout { $0.trailingAnchor == self.nameLabel?.trailingAnchor }
             }
             .distribution(.equalSpacing)
             .layoutMarginsRelativeArrangement(true)
@@ -348,14 +345,70 @@ extension UIViewController {
 @MainActor
 private let disposablesKey = malloc(1)!
 
+import ConcurrencyExtras
+
+@MainActor protocol UXControl: UIControl {}
+extension UIControl: UXControl {}
+
+extension UXControl {
+    @discardableResult
+    public func on(_ event: UIControl.Event, _ perform: @escaping () -> Void) -> Self {
+        addAction(UIAction { _ in perform() }, for: event)
+        return self
+    }
+    
+    @discardableResult
+    public func assign<Value>(
+        _ binding: @escaping @autoclosure Accessor<Value>,
+        to keyPath: ReferenceWritableKeyPath<Self, Value>
+    ) -> DisposeAction {
+        unassign(keyPath)
+        
+        let dispose = createEffect {
+            self[keyPath: keyPath] = binding()
+            return nil
+        }
+        
+        disposables[keyPath] = dispose
+        return dispose
+    }
+    
+    public func unassign<Value>(_ keyPath: KeyPath<Self, Value>) {
+        disposables[keyPath]?()
+        disposables[keyPath] = nil
+    }
+    
+    var disposables: [AnyKeyPath: DisposeAction] {
+        get {
+            objc_getAssociatedObject(self, uiControlDisposablesKey) as? [AnyKeyPath: DisposeAction]
+            ?? [:]
+        }
+        set {
+            objc_setAssociatedObject(
+                self, uiControlDisposablesKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+        }
+    }
+}
+
+@MainActor
+private let uiControlDisposablesKey = malloc(1)!
+
+
 extension UISearchBar {
     convenience init(frame: CGRect = .zero, text: @escaping @autoclosure Accessor<String>) {
         self.init(frame: frame)
-        self.searchTextField.bind(text: text())
+        self.searchTextField.assign(text(), to: \.text)
     }
     
     public func bind(to text: @escaping @autoclosure Accessor<String>) {
-        self.searchTextField.bind(text: text())
+        self.searchTextField.assign(text(), to: \.text)
+    }
+    
+    @discardableResult
+    public func on(_ event: UIControl.Event, _ perform: @escaping () -> Void) -> Self {
+        searchTextField.on(event, perform)
+        return self
     }
 }
 
@@ -363,6 +416,12 @@ extension UISearchController {
     convenience init(text: @escaping @autoclosure Accessor<String>) {
         self.init()
         self.searchBar.bind(to: text())
+    }
+    
+    @discardableResult
+    public func on(_ event: UIControl.Event, _ perform: @escaping () -> Void) -> Self {
+        searchBar.on(event, perform)
+        return self
     }
 }
 
@@ -388,9 +447,9 @@ final class PodcastCollectionViewController: UICollectionViewController {
     
     convenience init() {
         self.init(collectionViewLayout:
-            UICollectionViewCompositionalLayout.list(
-                using: .init(appearance: .insetGrouped)
-            )
+                    UICollectionViewCompositionalLayout.list(
+                        using: .init(appearance: .insetGrouped)
+                    )
         )
         
         self.title = "Podcasts"
@@ -403,7 +462,10 @@ final class PodcastCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchController = UISearchController(text: $viewModel.searchText)
+        searchController = UISearchController(text: self.searchText())
+        searchController.on(.editingChanged) {
+            self.searchText.write(self.searchController.searchBar.text ?? "")
+        }
         
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController

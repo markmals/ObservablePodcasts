@@ -1,13 +1,13 @@
 {
-  "originHash" : "f478035806f4bd0567d2fd8c9f9a89a71516570824f7e976bad45e89ea79f3de",
+  "originHash" : "18b95167953956ac362fefab49c606d3a47e404cb203a7f6f9da8e521e4929a8",
   "pins" : [
     {
       "identity" : "nuke",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke",
       "state" : {
-        "revision" : "084076db4f9b9ee4db51177ef5a4879689c1aa09",
-        "version" : "12.7.2"
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",
       "state" : {
-        "revision" : "b871e5ed11a23e52c2896a92ce2c829982ff8619",
-        "version" : "1.4.2"
+        "revision" : "71344dd930fde41e8f3adafe260adcbb2fc2a3dc",
+        "version" : "1.5.4"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-custom-dump",
       "state" : {
-        "revision" : "f01efb26f3a192a0e88dcdb7c3c391ec2fc25d9c",
-        "version" : "1.3.0"
+        "revision" : "aec6a73f5c1dc1f1be4f61888094b95cf995d973",
+        "version" : "1.3.2"
       }
     },
     {
@@ -42,17 +42,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-perception",
       "state" : {
-        "revision" : "d3ab98dc2887d1cc3bed676f6fa354da4cb22b3c",
-        "version" : "1.2.4"
+        "revision" : "1552c8f722ac256cc0b8daaf1a7073217d4fcdfb",
+        "version" : "1.3.4"
+      }
+    },
+    {
+      "identity" : "swift-signal",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/unixzii/swift-signal",
+      "state" : {
+        "branch" : "main",
+        "revision" : "39127faee5c1f1c57effb81b172ef989089e8bd7"
       }
     },
     {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax",
+      "location" : "https://github.com/swiftlang/swift-syntax",
       "state" : {
-        "revision" : "303e5c5c36d6a558407d364878df131c3546fad8",
-        "version" : "510.0.2"
+        "revision" : "82a453c2dfa335c7e778695762438dfe72b328d2",
+        "version" : "600.0.0-prerelease-2024-07-24"
       }
     },
     {
@@ -61,7 +70,7 @@
       "location" : "https://github.com/pointfreeco/swiftui-navigation/",
       "state" : {
         "branch" : "uikit-navigation-beta",
-        "revision" : "3ccea5481c76373c16c523010bd62a20be646d16"
+        "revision" : "92451e75c2a5ccd520f656b2726f1e5dba61f28c"
       }
     },
     {
@@ -69,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
       "state" : {
-        "revision" : "6f30bdba373bbd7fbfe241dddd732651f2fbd1e2",
-        "version" : "1.1.2"
+        "revision" : "357ca1e5dd31f613a1d43320870ebc219386a495",
+        "version" : "1.2.2"
       }
     }
   ],
