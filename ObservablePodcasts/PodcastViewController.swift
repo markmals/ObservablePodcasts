@@ -1,6 +1,6 @@
-import UIKit
-import SwiftUI
 import Observation
+import SwiftUI
+import UIKit
 import UIKitNavigation
 
 @Observable
@@ -11,87 +11,88 @@ final class PodcastViewModel {
 
 final class PodcastViewController: UICollectionViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Podcast>
-    
-    private let cellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, Podcast> {
-        (cell, indexPath, podcast) in
+    typealias CellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, Podcast>
+
+    private let cellRegistration = CellRegistration { cell, _, podcast in
         cell.contentConfiguration = UIHostingConfiguration {
             HStack(spacing: 15) {
                 AsyncImage(url: podcast.image)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 88, height: 88)
-                
+
                 VStack(alignment: .leading, spacing: 5) {
                     Text(podcast.name)
                         .font(.headline)
                         .lineLimit(2)
                         .truncationMode(.tail)
-                    
+
                     Text(podcast.creator)
                         .font(.subheadline)
                         .foregroundStyle(Color.secondary)
                         .truncationMode(.tail)
                 }
             }
-            .background(Color(UIColor { traits in
+            .background(
+                Color(UIColor { traits in
                     traits.userInterfaceStyle == .dark ? .secondarySystemBackground : .systemBackground
-                }
-            ))
+                })
+            )
         }
     }
-    
-    private lazy var dataSource = DataSource(collectionView: collectionView) {
-        (collectionView, indexPath, itemIdentifier) in
-        collectionView.dequeueConfiguredReusableCell(
-            using: self.cellRegistration,
-            for: indexPath,
-            item: itemIdentifier
-        )
+
+    private lazy var dataSource = DataSource(collectionView: collectionView) { [unowned self]
+        collectionView, indexPath, podcast in
+            collectionView.dequeueConfiguredReusableCell(
+                using: self.cellRegistration,
+                for: indexPath,
+                item: podcast
+            )
     }
-    
+
     @UIBinding private var viewModel = PodcastViewModel()
     @ViewLoading private var searchController: UISearchController
     private let inidicator = UIActivityIndicatorView()
-    
+
     private let manager = PodcastManager()
     private var updateTask: Task<Void, Never>?
-    
+
     convenience init() {
         self.init(collectionViewLayout:
             UICollectionViewCompositionalLayout.list(
                 using: .init(appearance: .insetGrouped)
             )
         )
-        
+
         title = "Podcasts"
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         observe { [unowned self] in self.update() }
     }
-    
+
     private func setup() {
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = dataSource
 
         searchController = UISearchController(text: $viewModel.searchText)
-        
+
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
-        
+
         inidicator.style = .large
         collectionView.addSubview(inidicator)
         inidicator.center.x = collectionView.center.x
         inidicator.center.y = collectionView.center.y / 2
     }
-    
+
     private func update() {
         updateTask?.cancel()
         inidicator.stopAnimating()
-        
+
         let text = viewModel.searchText
-        
+
         updateTask = Task { @MainActor in
             guard !text.isEmpty else {
                 await dataSource.apply(.init())
@@ -103,7 +104,7 @@ final class PodcastViewController: UICollectionViewController {
 
             inidicator.startAnimating()
             defer { inidicator.stopAnimating() }
-            
+
             if let podcasts = try? await manager.search(for: text) {
                 var snapshot = NSDiffableDataSourceSnapshot<Int, Podcast>()
                 snapshot.appendSections([0])
