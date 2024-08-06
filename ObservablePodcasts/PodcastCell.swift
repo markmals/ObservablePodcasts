@@ -1,47 +1,37 @@
 import UIKit
 
 final class PodcastCell: UIStackView, UIContentView {
-    private let nameLabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
-        label.numberOfLines = 2
-        label.lineBreakMode = .byTruncatingTail
-        return label
-    }()
+    private let nameLabel = UILabel().configure {
+        $0.font = .preferredFont(forTextStyle: .headline)
+        $0.numberOfLines = 2
+        $0.lineBreakMode = .byTruncatingTail
+    }
     
-    private let creatorLabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .subheadline)
-        label.textColor = .secondaryLabel
-        label.lineBreakMode = .byTruncatingTail
-        return label
-    }()
+    private let creatorLabel = UILabel().configure {
+        $0.font = .preferredFont(forTextStyle: .subheadline)
+        $0.textColor = .secondaryLabel
+        $0.lineBreakMode = .byTruncatingTail
+    }
     
-    private let labelStack = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.distribution = .equalSpacing
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.spacing = 5
-        return stack
-    }()
+    private let labelStack = UIStackView().configure {
+        $0.axis = .vertical
+        $0.alignment = .leading
+        $0.distribution = .equalSpacing
+        $0.isLayoutMarginsRelativeArrangement = true
+        $0.spacing = 5
+    }
     
-    private let artworkImage = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        
+    private let artworkImage = UIImageView().configure {
+        $0.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
-            image.widthAnchor.constraint(equalToConstant: 88),
-            image.heightAnchor.constraint(equalToConstant: 88)
+            $0.widthAnchor.constraint(equalToConstant: 88),
+            $0.heightAnchor.constraint(equalToConstant: 88)
         ])
-        
-        return image
-    }()
+    }
     
     init(_ configuration: Podcast) {
         self.configuration = configuration
-        super.init(frame: .zero)
+        super.init()
         
         self.axis = .horizontal
         self.alignment = .center

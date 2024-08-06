@@ -5,7 +5,7 @@ extension Sequence {
         var values = [T]()
 
         for element in self {
-            try await values.append(transform(element))
+            values.append(try await transform(element))
         }
 
         return values
