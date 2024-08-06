@@ -25,7 +25,7 @@ struct PodcastManager {
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let results = try JSONDecoder().decode(SearchResults.self, from: data).results
-        let podcasts = await results.asyncMap { result in
+        let podcasts = await results.map { result in
             Podcast(
                 id: result.trackId,
                 image: try? await ImagePipeline.shared.imageTask(with: result.artworkUrl600).image,
@@ -37,4 +37,3 @@ struct PodcastManager {
         return podcasts
     }
 }
-

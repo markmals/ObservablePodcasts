@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB42E0862C61CEB8009ABB88 /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = DB42E0852C61CEB8009ABB88 /* SwiftNavigation */; };
+		DB42E0882C61CEB8009ABB88 /* UIKitNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = DB42E0872C61CEB8009ABB88 /* UIKitNavigation */; };
+		DB42E08A2C61D2D9009ABB88 /* Sequence+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42E0892C61D2D8009ABB88 /* Sequence+async.swift */; };
 		DBB50ABC2C233F5D008964D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */; };
 		DBB50ABE2C233F5D008964D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */; };
 		DBB50AC02C233F5D008964D4 /* PodcastListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABF2C233F5D008964D4 /* PodcastListViewController.swift */; };
 		DBB50AC52C233F5F008964D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB50AC42C233F5F008964D4 /* Assets.xcassets */; };
 		DBB50AC82C233F5F008964D4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DBB50AC72C233F5F008964D4 /* Base */; };
-		DBB50AD22C2340F8008964D4 /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = DBB50AD12C2340F8008964D4 /* SwiftNavigation */; };
-		DBB50AD42C2340F8008964D4 /* UIKitNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = DBB50AD32C2340F8008964D4 /* UIKitNavigation */; };
 		DBB50AD62C23502A008964D4 /* UISearch+UIBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AD52C23502A008964D4 /* UISearch+UIBinding.swift */; };
 		DBB50AD82C23506E008964D4 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AD72C23506E008964D4 /* Podcast.swift */; };
 		DBB50ADA2C235088008964D4 /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AD92C235088008964D4 /* PodcastCell.swift */; };
 		DBB50ADC2C2350A5008964D4 /* PodcastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ADB2C2350A5008964D4 /* PodcastManager.swift */; };
 		DBB50ADF2C23510E008964D4 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = DBB50ADE2C23510E008964D4 /* Nuke */; };
-		DBB50AE12C2351D2008964D4 /* Sequence+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AE02C2351D2008964D4 /* Sequence+async.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB42E0892C61D2D8009ABB88 /* Sequence+async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+async.swift"; sourceTree = "<group>"; };
 		DBB50AB82C233F5D008964D4 /* ObservablePodcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservablePodcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		DBB50AD72C23506E008964D4 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		DBB50AD92C235088008964D4 /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		DBB50ADB2C2350A5008964D4 /* PodcastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastManager.swift; sourceTree = "<group>"; };
-		DBB50AE02C2351D2008964D4 /* Sequence+async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+async.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,9 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB42E0882C61CEB8009ABB88 /* UIKitNavigation in Frameworks */,
+				DB42E0862C61CEB8009ABB88 /* SwiftNavigation in Frameworks */,
 				DBB50ADF2C23510E008964D4 /* Nuke in Frameworks */,
-				DBB50AD22C2340F8008964D4 /* SwiftNavigation in Frameworks */,
-				DBB50AD42C2340F8008964D4 /* UIKitNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 		DBB50AE22C2351DA008964D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DBB50AE02C2351D2008964D4 /* Sequence+async.swift */,
+				DB42E0892C61D2D8009ABB88 /* Sequence+async.swift */,
 				DBB50AD52C23502A008964D4 /* UISearch+UIBinding.swift */,
 			);
 			path = Extensions;
@@ -118,9 +118,9 @@
 			);
 			name = ObservablePodcasts;
 			packageProductDependencies = (
-				DBB50AD12C2340F8008964D4 /* SwiftNavigation */,
-				DBB50AD32C2340F8008964D4 /* UIKitNavigation */,
 				DBB50ADE2C23510E008964D4 /* Nuke */,
+				DB42E0852C61CEB8009ABB88 /* SwiftNavigation */,
+				DB42E0872C61CEB8009ABB88 /* UIKitNavigation */,
 			);
 			productName = ObservablePodcasts;
 			productReference = DBB50AB82C233F5D008964D4 /* ObservablePodcasts.app */;
@@ -151,8 +151,8 @@
 			);
 			mainGroup = DBB50AAF2C233F5D008964D4;
 			packageReferences = (
-				DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				DBB50ADD2C23510D008964D4 /* XCRemoteSwiftPackageReference "Nuke" */,
+				DB42E0842C61CEB8009ABB88 /* XCRemoteSwiftPackageReference "swift-navigation" */,
 			);
 			productRefGroup = DBB50AB92C233F5D008964D4 /* Products */;
 			projectDirPath = "";
@@ -181,7 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB50AC02C233F5D008964D4 /* PodcastListViewController.swift in Sources */,
-				DBB50AE12C2351D2008964D4 /* Sequence+async.swift in Sources */,
+				DB42E08A2C61D2D9009ABB88 /* Sequence+async.swift in Sources */,
 				DBB50ADC2C2350A5008964D4 /* PodcastManager.swift in Sources */,
 				DBB50ABC2C233F5D008964D4 /* AppDelegate.swift in Sources */,
 				DBB50ABE2C233F5D008964D4 /* SceneDelegate.swift in Sources */,
@@ -404,12 +404,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
+		DB42E0842C61CEB8009ABB88 /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation/";
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
 			requirement = {
-				branch = "uikit-navigation-beta";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		DBB50ADD2C23510D008964D4 /* XCRemoteSwiftPackageReference "Nuke" */ = {
@@ -423,14 +423,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DBB50AD12C2340F8008964D4 /* SwiftNavigation */ = {
+		DB42E0852C61CEB8009ABB88 /* SwiftNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			package = DB42E0842C61CEB8009ABB88 /* XCRemoteSwiftPackageReference "swift-navigation" */;
 			productName = SwiftNavigation;
 		};
-		DBB50AD32C2340F8008964D4 /* UIKitNavigation */ = {
+		DB42E0872C61CEB8009ABB88 /* UIKitNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DBB50AD02C2340F8008964D4 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			package = DB42E0842C61CEB8009ABB88 /* XCRemoteSwiftPackageReference "swift-navigation" */;
 			productName = UIKitNavigation;
 		};
 		DBB50ADE2C23510E008964D4 /* Nuke */ = {

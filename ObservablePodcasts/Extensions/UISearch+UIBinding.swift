@@ -7,7 +7,7 @@ extension UISearchBar {
         self.searchTextField.bind(text: text)
     }
     
-    public func bind(to text: UIBinding<String>) {
+    public func bind(text: UIBinding<String>) {
         self.searchTextField.bind(text: text)
     }
 }
@@ -15,6 +15,6 @@ extension UISearchBar {
 extension UISearchController {
     convenience init(text: UIBinding<String>) {
         self.init()
-        self.searchBar.bind(to: text)
+        self.searchBar.bind(text: text)
     }
 }

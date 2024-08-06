@@ -1,5 +1,5 @@
 extension Sequence {
-    func asyncMap<T>(
+    func map<T>(
         _ transform: (Element) async throws -> T
     ) async rethrows -> [T] {
         var values = [T]()
@@ -11,4 +11,3 @@ extension Sequence {
         return values
     }
 }
-
