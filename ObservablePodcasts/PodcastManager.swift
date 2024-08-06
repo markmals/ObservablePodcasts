@@ -1,5 +1,11 @@
-import UIKit
-import Nuke
+import Foundation
+
+struct Podcast: Identifiable, Hashable {
+    let id: UInt
+    let image: URL?
+    let name: String
+    let creator: String
+}
 
 struct PodcastManager {
     let baseURL = URL(string: "https://itunes.apple.com")!
@@ -25,10 +31,10 @@ struct PodcastManager {
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let results = try JSONDecoder().decode(SearchResults.self, from: data).results
-        let podcasts = await results.map { result in
+        let podcasts = results.map { result in
             Podcast(
                 id: result.trackId,
-                image: try? await ImagePipeline.shared.imageTask(with: result.artworkUrl600).image,
+                image: result.artworkUrl600,
                 name: result.collectionName,
                 creator: result.artistName
             )

@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene as! UIWindowScene)
         let navigationController = UINavigationController()
-        let podcastList = PodcastListViewController()
+        let podcastList = PodcastViewController()
         
         navigationController.setViewControllers([podcastList], animated: false)
         navigationController.navigationBar.prefersLargeTitles = true

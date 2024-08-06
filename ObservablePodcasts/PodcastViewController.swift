@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 import Observation
 import UIKitNavigation
 
@@ -8,11 +9,36 @@ final class PodcastViewModel {
     var searchText = ""
 }
 
-final class PodcastListViewController: UICollectionViewController {
+final class PodcastViewController: UICollectionViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Podcast>
-    private let cellRegistration = UICollectionView.CellRegistration { cell, indexPath, podcast in
-        cell.contentConfiguration = podcast
+    
+    private let cellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, Podcast> {
+        (cell, indexPath, podcast) in
+        cell.contentConfiguration = UIHostingConfiguration {
+            HStack(spacing: 15) {
+                AsyncImage(url: podcast.image)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 88, height: 88)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(podcast.name)
+                        .font(.headline)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
+                    
+                    Text(podcast.creator)
+                        .font(.subheadline)
+                        .foregroundStyle(Color.secondary)
+                        .truncationMode(.tail)
+                }
+            }
+            .background(Color(UIColor { traits in
+                    traits.userInterfaceStyle == .dark ? .secondarySystemBackground : .systemBackground
+                }
+            ))
+        }
     }
+    
     private lazy var dataSource = DataSource(collectionView: collectionView) {
         (collectionView, indexPath, itemIdentifier) in
         collectionView.dequeueConfiguredReusableCell(

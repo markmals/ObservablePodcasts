@@ -9,31 +9,24 @@
 /* Begin PBXBuildFile section */
 		DB42E0862C61CEB8009ABB88 /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = DB42E0852C61CEB8009ABB88 /* SwiftNavigation */; };
 		DB42E0882C61CEB8009ABB88 /* UIKitNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = DB42E0872C61CEB8009ABB88 /* UIKitNavigation */; };
-		DB42E08A2C61D2D9009ABB88 /* Sequence+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42E0892C61D2D8009ABB88 /* Sequence+async.swift */; };
 		DBB50ABC2C233F5D008964D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */; };
 		DBB50ABE2C233F5D008964D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */; };
-		DBB50AC02C233F5D008964D4 /* PodcastListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABF2C233F5D008964D4 /* PodcastListViewController.swift */; };
+		DBB50AC02C233F5D008964D4 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ABF2C233F5D008964D4 /* PodcastViewController.swift */; };
 		DBB50AC52C233F5F008964D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB50AC42C233F5F008964D4 /* Assets.xcassets */; };
 		DBB50AC82C233F5F008964D4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DBB50AC72C233F5F008964D4 /* Base */; };
 		DBB50AD62C23502A008964D4 /* UISearch+UIBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AD52C23502A008964D4 /* UISearch+UIBinding.swift */; };
-		DBB50AD82C23506E008964D4 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AD72C23506E008964D4 /* Podcast.swift */; };
-		DBB50ADA2C235088008964D4 /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50AD92C235088008964D4 /* PodcastCell.swift */; };
 		DBB50ADC2C2350A5008964D4 /* PodcastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB50ADB2C2350A5008964D4 /* PodcastManager.swift */; };
-		DBB50ADF2C23510E008964D4 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = DBB50ADE2C23510E008964D4 /* Nuke */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DB42E0892C61D2D8009ABB88 /* Sequence+async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+async.swift"; sourceTree = "<group>"; };
 		DBB50AB82C233F5D008964D4 /* ObservablePodcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservablePodcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DBB50ABF2C233F5D008964D4 /* PodcastListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastListViewController.swift; sourceTree = "<group>"; };
+		DBB50ABF2C233F5D008964D4 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		DBB50AC42C233F5F008964D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB50AC72C233F5F008964D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB50AC92C233F5F008964D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBB50AD52C23502A008964D4 /* UISearch+UIBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearch+UIBinding.swift"; sourceTree = "<group>"; };
-		DBB50AD72C23506E008964D4 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
-		DBB50AD92C235088008964D4 /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		DBB50ADB2C2350A5008964D4 /* PodcastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,7 +37,6 @@
 			files = (
 				DB42E0882C61CEB8009ABB88 /* UIKitNavigation in Frameworks */,
 				DB42E0862C61CEB8009ABB88 /* SwiftNavigation in Frameworks */,
-				DBB50ADF2C23510E008964D4 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,10 +64,8 @@
 			children = (
 				DBB50ABB2C233F5D008964D4 /* AppDelegate.swift */,
 				DBB50ABD2C233F5D008964D4 /* SceneDelegate.swift */,
-				DBB50ABF2C233F5D008964D4 /* PodcastListViewController.swift */,
+				DBB50ABF2C233F5D008964D4 /* PodcastViewController.swift */,
 				DBB50ADB2C2350A5008964D4 /* PodcastManager.swift */,
-				DBB50AD92C235088008964D4 /* PodcastCell.swift */,
-				DBB50AD72C23506E008964D4 /* Podcast.swift */,
 				DBB50AE22C2351DA008964D4 /* Extensions */,
 				DBB50ACF2C233F73008964D4 /* Resources */,
 			);
@@ -95,7 +85,6 @@
 		DBB50AE22C2351DA008964D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DB42E0892C61D2D8009ABB88 /* Sequence+async.swift */,
 				DBB50AD52C23502A008964D4 /* UISearch+UIBinding.swift */,
 			);
 			path = Extensions;
@@ -118,7 +107,6 @@
 			);
 			name = ObservablePodcasts;
 			packageProductDependencies = (
-				DBB50ADE2C23510E008964D4 /* Nuke */,
 				DB42E0852C61CEB8009ABB88 /* SwiftNavigation */,
 				DB42E0872C61CEB8009ABB88 /* UIKitNavigation */,
 			);
@@ -151,7 +139,6 @@
 			);
 			mainGroup = DBB50AAF2C233F5D008964D4;
 			packageReferences = (
-				DBB50ADD2C23510D008964D4 /* XCRemoteSwiftPackageReference "Nuke" */,
 				DB42E0842C61CEB8009ABB88 /* XCRemoteSwiftPackageReference "swift-navigation" */,
 			);
 			productRefGroup = DBB50AB92C233F5D008964D4 /* Products */;
@@ -180,14 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBB50AC02C233F5D008964D4 /* PodcastListViewController.swift in Sources */,
-				DB42E08A2C61D2D9009ABB88 /* Sequence+async.swift in Sources */,
+				DBB50AC02C233F5D008964D4 /* PodcastViewController.swift in Sources */,
 				DBB50ADC2C2350A5008964D4 /* PodcastManager.swift in Sources */,
 				DBB50ABC2C233F5D008964D4 /* AppDelegate.swift in Sources */,
 				DBB50ABE2C233F5D008964D4 /* SceneDelegate.swift in Sources */,
 				DBB50AD62C23502A008964D4 /* UISearch+UIBinding.swift in Sources */,
-				DBB50ADA2C235088008964D4 /* PodcastCell.swift in Sources */,
-				DBB50AD82C23506E008964D4 /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,14 +396,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		DBB50ADD2C23510D008964D4 /* XCRemoteSwiftPackageReference "Nuke" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.7.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -432,11 +408,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DB42E0842C61CEB8009ABB88 /* XCRemoteSwiftPackageReference "swift-navigation" */;
 			productName = UIKitNavigation;
-		};
-		DBB50ADE2C23510E008964D4 /* Nuke */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DBB50ADD2C23510D008964D4 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
